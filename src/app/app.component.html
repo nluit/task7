@@ -1,0 +1,86 @@
+<!-- navbar -->
+<app-navbar></app-navbar>
+<!-- Search date -->
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-md-4 mt-5">
+
+            <div id="accordion">
+                <div class='row mt-5'></div>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Image Information
+                              </button>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body bg-dark">
+                            <label for="" class="label text-white"> Date:  {{ date}} </label><br>
+                            <label for="" class="label text-white"> Number of Photo: {{list.length}} </label> <br>
+                            <label for="" class="label text-white">  </label><br>
+                            <label for="" class="label text-white">  </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Slideshow Controls
+                              </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body bg-dark">
+                            <div class="row">
+                                <div class="col-md-5 my-3">
+                                    <label for="" class="label text-white">Showing {{ list.length }}.</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <form>
+                                        <div class="input-group input-group-sm my-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text label bg-success text-white" for=""><i class="fas fa-calendar-alt"></i></label>
+                                            </div>
+                                            <input type="date" class="form-control" [ngModel]="date" (ngModelChange)="getDate($event)" name="date">
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row my-2">
+                                <div class="col-md-5 my-2">
+                                    <button class="btn btn-success" (click)="onPlay()"><i class="fas fa-play"></i> Play</button>
+                                </div>
+                                <div class="col-md-7 my-2">
+                                    <button class="btn btn-success" (click)="onPause()"> <i class="fas fa-pause"></i>Pause</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-8">
+            <!-- Slider -->
+            <app-carousel [pause]="pause" [date]="date" [list]="list"></app-carousel>
+
+        </div>
+
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+
+
+<!--  -->
