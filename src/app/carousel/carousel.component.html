@@ -1,6 +1,7 @@
 <ngb-carousel #carousel>
     <label class="text-white text-center"> Status:  {{ pause }}</label>
-    <ng-template ngbSlide *ngFor="let i of list">
-        <img src="{{i.image}}" width="100%">
+    <ng-template ngbSlide *ngFor="let item of list; index as i">
+        <img src="{{item.image}}"  width="100%">  
+  
     </ng-template>
 </ngb-carousel>

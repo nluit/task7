@@ -12,7 +12,7 @@ export class CarouselComponent implements OnInit {
   private _pause ;
   @Input() public date;
   @Input('list')  list:any =[];
-
+  
   @Input() set pause(pause: boolean) {
     this._pause = pause ;
   } 

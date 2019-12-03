@@ -34,7 +34,9 @@ export class AppComponent  implements OnInit {
   }
   
   onPause(){
+    
     this.pause=true;
+
   }
   onPlay(){        
     this.pause=false;
