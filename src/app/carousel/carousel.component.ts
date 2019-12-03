@@ -1,8 +1,5 @@
 import { Component, OnInit ,Input , ViewChild } from '@angular/core';
 import { NgbCarouselConfig  , NgbCarousel} from '@ng-bootstrap/ng-bootstrap';  
-import { DataService } from '../data.service';
-
-
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
@@ -12,7 +9,7 @@ export class CarouselComponent implements OnInit {
 
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 
-  private _pause : boolean;
+  private _pause ;
   @Input() public date;
   @Input('list')  list:any =[];
 
@@ -27,17 +24,15 @@ export class CarouselComponent implements OnInit {
     else this.carousel.cycle();
      return this._pause; 
     }
-  constructor(config: NgbCarouselConfig,  private dataService: DataService) { 
-    config.interval = 500;  
+  constructor(config: NgbCarouselConfig) { 
+    config.interval = 1000;  
     config.wrap = true;  
     config.keyboard = false;  
     config.pauseOnHover = true;  
     config.showNavigationIndicators = false;  
-
   }  
 
-  ngOnInit (){  
-    
+  ngOnInit (){     
   }
   
 }

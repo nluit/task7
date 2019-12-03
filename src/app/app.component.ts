@@ -1,6 +1,5 @@
 import { Component , OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -9,9 +8,8 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit {
-  public pause : boolean= false;
-
-  public list : object;
+  public pause : boolean= false;  
+  public  list: any [] =[];
   public  date :string ='2019-06-27';
   public day: string='27';
   public month :string='06';
@@ -24,12 +22,14 @@ export class AppComponent  implements OnInit {
     this.month=this.date.slice(5,7);
     this.day=this.date.slice(8,10);
     this.dataService.newdate=this.date;
-    return  this.dataService.getData(this.date).pipe(map(data => { return data.map( item => `https://epic.gsfc.nasa.gov/archive/natural/${this.year}/${this.month}/${this.day}/jpg/${item.image}.jpg`
-        );
-      })
-    ).subscribe(data => {
-        this.list=data;
-    });
+    this.dataService.getData(this.date).subscribe( data =>{
+    data.map(i=>{
+      i.image=`https://epic.gsfc.nasa.gov/archive/natural/${this.year}/${this.month}/${this.day}/jpg/${i.image}.jpg`;
+    })
+    this.list=data;
+    console.log(this.list);
+   }
+  );  
 
   }
   
@@ -45,12 +45,15 @@ export class AppComponent  implements OnInit {
     this.month=this.date.slice(5,7);
     this.day=this.date.slice(8,10);
     this.dataService.newdate=this.date;
-    return  this.dataService.getData(this.date).pipe(map(data => { return data.map( item => `https://epic.gsfc.nasa.gov/archive/natural/${this.year}/${this.month}/${this.day}/jpg/${item.image}.jpg`
-        );
+
+     this.dataService.getData(this.date).subscribe( data =>{
+      data.map(i=>{
+        i.image=`https://epic.gsfc.nasa.gov/archive/natural/${this.year}/${this.month}/${this.day}/jpg/${i.image}.jpg`;
       })
-    ).subscribe(data => {
-        this.list=data;
-    });
+      this.list=data;
+      console.log(this.list);      
+      }
+    );
   }
 
 }
