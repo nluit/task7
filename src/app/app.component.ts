@@ -14,7 +14,12 @@ export class AppComponent  implements OnInit {
   public day: string='27';
   public month :string='06';
   public year: string='2019';
+  public obj : object = {};
+  ongetData(value){
 
+    this.obj=value;
+
+  }
   getDate(event){  
 
     this.date=event; 

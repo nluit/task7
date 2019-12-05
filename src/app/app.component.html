@@ -13,15 +13,16 @@
                         <h5 class="mb-0">
                             <button class="btn btn-link" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     Image Information
-                              </button>
+                            </button>
                         </h5>
                     </div>
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body bg-dark">
                             <label for="" class="label text-white"> Date:  {{ date }} </label><br>
                             <label for="" class="label text-white"> Images : {{ list?.length }} </label> <br>
-                            <label for="" class="label text-white">  </label><br>
-                            <label for="" class="label text-white">  </label>
+                            <label for="" class="label text-white"> X: {{ obj['x'] }} </label><br>
+                            <label for="" class="label text-white"> Y: {{ obj['y'] }} </label><br>
+                            <label for="" class="label text-white"> Z :{{ obj['z'] }} </label>
                         </div>
                     </div>
                 </div>
@@ -37,7 +38,7 @@
                         <div class="card-body bg-dark">
                             <div class="row">
                                 <div class="col-md-5 my-3">
-                                    <label for="" class="label text-white">Showing  {{ list?.length }} </label>
+                                    <label for="" class="label text-white">Showing {{obj['slide']+1}} / {{ list?.length }} </label>
                                 </div>
                                 <div class="col-md-7">
                                     <form>
@@ -72,7 +73,7 @@
         </div>
         <div class="col-md-8">
             <!-- Slider -->
-            <app-carousel [pause]="pause" [date]="date" [list]="list"></app-carousel>
+            <app-carousel [pause]="pause" [date]="date" [list]="list" (data)="ongetData($event)"></app-carousel>
 
         </div>
 
